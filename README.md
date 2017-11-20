@@ -20,10 +20,10 @@ allprojects {
 }
 ```
 
-在项目build.gradle中添加 ![](https://jitpack.io/v/ronghao/CacheManage.svg)
+在项目build.gradle中添加 ![](https://jitpack.io/v/ronghao/DialogFactory.svg)
 ```
 dependencies {
-    compile 'com.github.ronghao:CacheManage:1.1.0'
+    compile 'com.github.ronghao:DialogFactory:1.0.0'
 }
 ```
 
