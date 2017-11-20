@@ -7,10 +7,38 @@
     tools:context="com.haohaohu.dialogfactorysample.MainActivity"
     >
 
-  <TextView
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:text="Hello World!"
-      />
+  <ScrollView
+      android:layout_width="match_parent"
+      android:layout_height="100dp"
+      >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
+      <TextView
+          android:layout_width="match_parent"
+          android:layout_height="26dp"
+          android:gravity="center"
+          android:onClick="onClick1"
+          android:text="仿ios效果dialog"
+          />
 
+      <TextView
+          android:layout_width="match_parent"
+          android:layout_height="26dp"
+          android:gravity="center"
+          android:onClick="onClick2"
+          android:text="带圆形进度条dialog"
+          />
+
+      <TextView
+          android:layout_width="match_parent"
+          android:layout_height="26dp"
+          android:gravity="center"
+          android:onClick="onClick3"
+          android:text="带圆形进度条的带文字的dialog"
+          />
+    </LinearLayout>
+  </ScrollView>
 </RelativeLayout>
