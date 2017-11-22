@@ -41,6 +41,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onClick3(View view) {
-        ProgressTextDialog.newBuilder(MainActivity.this).setText("加载中").build().show();
+        ProgressTextDialog.newBuilder(MainActivity.this).setText("网络加载中").build().show();
     }
 }

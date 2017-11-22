@@ -23,6 +23,8 @@ public class ProgressTextDialog extends Dialog {
     private Animation anim;
     private ImageView progressLoading;
     private TextView progressText;
+    private int width;
+    private int height;
 
     private String text;
 
@@ -33,6 +35,8 @@ public class ProgressTextDialog extends Dialog {
     private ProgressTextDialog(Builder builder) {
         super(builder.context, R.style.dialog_pay);
         text = builder.text;
+        width = builder.width;
+        height = builder.height;
         initView();
     }
 
@@ -45,8 +49,8 @@ public class ProgressTextDialog extends Dialog {
         Window window = getWindow();
         window.setGravity(Gravity.CENTER);
         WindowManager.LayoutParams lp = window.getAttributes();
-        lp.width = dp2px(70);
-        lp.height = dp2px(70);
+        lp.width = width;
+        lp.height = height;
         window.setAttributes(lp);
 
         anim = AnimationUtils.loadAnimation(getContext(), R.anim.progress_rotate);
@@ -66,14 +70,16 @@ public class ProgressTextDialog extends Dialog {
         }
     }
 
-    public int dp2px(float dpValue) {
-        final float scale = getContext().getResources().getDisplayMetrics().density;
+    public static int dp2px(Context val, float dpValue) {
+        final float scale = val.getResources().getDisplayMetrics().density;
         return (int) (dpValue * scale + 0.5f);
     }
 
     public static final class Builder {
         private Context context;
         private String text;
+        private int width;
+        private int height;
 
         public ProgressTextDialog build() {
             return new ProgressTextDialog(this);
@@ -81,6 +87,8 @@ public class ProgressTextDialog extends Dialog {
 
         private Builder(Context val) {
             context = val;
+            width = dp2px(val, 70);
+            height = dp2px(val, 70);
         }
 
         public Builder setText(String text) {

@@ -21,6 +21,8 @@ import android.widget.ImageView;
 public class ProgressDialog extends Dialog {
     private Animation anim;
     private ImageView progressLoading;
+    private int width;
+    private int height;
 
     public static ProgressDialog.Builder newBuilder(Context val) {
         return new ProgressDialog.Builder(val);
@@ -28,7 +30,8 @@ public class ProgressDialog extends Dialog {
 
     private ProgressDialog(Builder builder) {
         super(builder.context, R.style.dialog_pay);
-
+        width = builder.width;
+        height = builder.height;
         initView();
     }
 
@@ -41,8 +44,8 @@ public class ProgressDialog extends Dialog {
         Window window = getWindow();
         window.setGravity(Gravity.CENTER);
         WindowManager.LayoutParams lp = window.getAttributes();
-        lp.width = dp2px(70);
-        lp.height = dp2px(70);
+        lp.width = width;
+        lp.height = height;
         window.setAttributes(lp);
 
         anim = AnimationUtils.loadAnimation(getContext(), R.anim.progress_rotate);
@@ -59,16 +62,20 @@ public class ProgressDialog extends Dialog {
         }
     }
 
-    public int dp2px(float dpValue) {
-        final float scale = getContext().getResources().getDisplayMetrics().density;
+    public static int dp2px(Context val, float dpValue) {
+        final float scale = val.getResources().getDisplayMetrics().density;
         return (int) (dpValue * scale + 0.5f);
     }
 
     public static final class Builder {
         private Context context;
+        private int width;
+        private int height;
 
         private Builder(Context val) {
             context = val;
+            width = dp2px(val, 70);
+            height = dp2px(val, 70);
         }
 
         public ProgressDialog build() {

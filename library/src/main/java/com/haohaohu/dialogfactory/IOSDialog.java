@@ -28,6 +28,9 @@ public class IOSDialog extends Dialog implements View.OnClickListener {
     private String okText;
     private String cancelText;
 
+    private int width;
+    private int height;
+
     public static Builder newBuilder(Context val) {
         return new Builder(val);
     }
@@ -38,7 +41,8 @@ public class IOSDialog extends Dialog implements View.OnClickListener {
         okText = builder.okText;
         cancelText = builder.cancelText;
         onButtonListener = builder.onButtonListener;
-
+        width = builder.width;
+        height = builder.height;
         initView();
     }
 
@@ -57,8 +61,8 @@ public class IOSDialog extends Dialog implements View.OnClickListener {
         Window window = getWindow();
         window.setGravity(Gravity.CENTER);
         WindowManager.LayoutParams lp = window.getAttributes();
-        lp.width = dp2px(260);
-        lp.height = dp2px(140);
+        lp.width = width;
+        lp.height = height;
         window.setAttributes(lp);
 
         if (!TextUtils.isEmpty(text)) {
@@ -70,11 +74,6 @@ public class IOSDialog extends Dialog implements View.OnClickListener {
         if (!TextUtils.isEmpty(cancelText)) {
             dialogBaseCancel.setText(cancelText);
         }
-    }
-
-    public int dp2px(float dpValue) {
-        final float scale = getContext().getResources().getDisplayMetrics().density;
-        return (int) (dpValue * scale + 0.5f);
     }
 
     @Override
@@ -94,6 +93,11 @@ public class IOSDialog extends Dialog implements View.OnClickListener {
         }
     }
 
+    public static int dp2px(Context val, float dpValue) {
+        final float scale = val.getResources().getDisplayMetrics().density;
+        return (int) (dpValue * scale + 0.5f);
+    }
+
     public interface OnButtonListener {
         void onOK();
 
@@ -105,10 +109,15 @@ public class IOSDialog extends Dialog implements View.OnClickListener {
         private String text;
         private String okText;
         private String cancelText;
+
+        private int width;
+        private int height;
         private OnButtonListener onButtonListener;
 
         private Builder(Context val) {
             context = val;
+            width = dp2px(val, 260);
+            height = dp2px(val, 140);
         }
 
         public Builder setText(String val) {
@@ -128,6 +137,16 @@ public class IOSDialog extends Dialog implements View.OnClickListener {
 
         public Builder setOnButtonListener(OnButtonListener listener) {
             onButtonListener = listener;
+            return this;
+        }
+
+        public Builder setWidth(int width) {
+            this.width = width;
+            return this;
+        }
+
+        public Builder setHeight(int height) {
+            this.height = height;
             return this;
         }
 
