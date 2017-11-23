@@ -12,7 +12,7 @@
       android:layout_alignParentBottom="true"
       >
     <TextView
-        android:id="@+id/dialog_base_cancel"
+        android:id="@+id/dialog_ios_cancel"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1"
@@ -28,7 +28,7 @@
         android:background="#3e4d4d4d"
         />
     <TextView
-        android:id="@+id/dialog_base_ok"
+        android:id="@+id/dialog_ios_ok"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1"
@@ -47,7 +47,7 @@
       />
 
   <TextView
-      android:id="@+id/dialog_base_text"
+      android:id="@+id/dialog_ios_text"
       android:layout_width="match_parent"
       android:layout_height="match_parent"
       android:layout_above="@id/dialog_base_bottom"

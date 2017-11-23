@@ -39,6 +39,14 @@
           android:onClick="onClick3"
           android:text="带圆形进度条的带文字的dialog"
           />
+
+      <TextView
+          android:layout_width="match_parent"
+          android:layout_height="26dp"
+          android:gravity="center"
+          android:onClick="onClick4"
+          android:text="文字dialog"
+          />
     </LinearLayout>
   </ScrollView>
 </RelativeLayout>

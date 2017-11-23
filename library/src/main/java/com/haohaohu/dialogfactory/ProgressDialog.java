@@ -62,11 +62,6 @@ public class ProgressDialog extends Dialog {
         }
     }
 
-    public static int dp2px(Context val, float dpValue) {
-        final float scale = val.getResources().getDisplayMetrics().density;
-        return (int) (dpValue * scale + 0.5f);
-    }
-
     public static final class Builder {
         private Context context;
         private int width;
@@ -74,8 +69,8 @@ public class ProgressDialog extends Dialog {
 
         private Builder(Context val) {
             context = val;
-            width = dp2px(val, 70);
-            height = dp2px(val, 70);
+            width = SizeUtil.dp2px(val, 70);
+            height = SizeUtil.dp2px(val, 70);
         }
 
         public ProgressDialog build() {

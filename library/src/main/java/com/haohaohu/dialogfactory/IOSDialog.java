@@ -20,9 +20,9 @@ public class IOSDialog extends Dialog implements View.OnClickListener {
 
     private final OnButtonListener onButtonListener;
 
-    private TextView dialogBaseCancel;
-    private TextView dialogBaseOk;
-    private TextView dialogBaseText;
+    private TextView dialogIosCancel;
+    private TextView dialogIosOk;
+    private TextView dialogIosText;
 
     private String text;
     private String okText;
@@ -49,14 +49,14 @@ public class IOSDialog extends Dialog implements View.OnClickListener {
     private void initView() {
         LayoutInflater inflater =
                 (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View view = inflater.inflate(R.layout.dialog_base, null, false);
-        dialogBaseCancel = (TextView) view.findViewById(R.id.dialog_base_cancel);
-        dialogBaseOk = (TextView) view.findViewById(R.id.dialog_base_ok);
-        dialogBaseText = (TextView) view.findViewById(R.id.dialog_base_text);
+        View view = inflater.inflate(R.layout.dialog_ios, null, false);
+        dialogIosCancel = (TextView) view.findViewById(R.id.dialog_ios_cancel);
+        dialogIosOk = (TextView) view.findViewById(R.id.dialog_ios_ok);
+        dialogIosText = (TextView) view.findViewById(R.id.dialog_ios_text);
         setContentView(view);
 
-        dialogBaseCancel.setOnClickListener(this);
-        dialogBaseOk.setOnClickListener(this);
+        dialogIosCancel.setOnClickListener(this);
+        dialogIosOk.setOnClickListener(this);
 
         Window window = getWindow();
         window.setGravity(Gravity.CENTER);
@@ -66,36 +66,31 @@ public class IOSDialog extends Dialog implements View.OnClickListener {
         window.setAttributes(lp);
 
         if (!TextUtils.isEmpty(text)) {
-            dialogBaseText.setText(text);
+            dialogIosText.setText(text);
         }
         if (!TextUtils.isEmpty(okText)) {
-            dialogBaseOk.setText(okText);
+            dialogIosOk.setText(okText);
         }
         if (!TextUtils.isEmpty(cancelText)) {
-            dialogBaseCancel.setText(cancelText);
+            dialogIosCancel.setText(cancelText);
         }
     }
 
     @Override
     public void onClick(View view) {
         int i = view.getId();
-        if (i == R.id.dialog_base_cancel) {
+        if (i == R.id.dialog_ios_cancel) {
             if (onButtonListener != null) {
                 onButtonListener.onCancel();
             }
             IOSDialog.this.dismiss();
-        } else if (i == R.id.dialog_base_ok) {
+        } else if (i == R.id.dialog_ios_ok) {
             if (onButtonListener != null) {
                 onButtonListener.onOK();
             }
             IOSDialog.this.dismiss();
         } else {
         }
-    }
-
-    public static int dp2px(Context val, float dpValue) {
-        final float scale = val.getResources().getDisplayMetrics().density;
-        return (int) (dpValue * scale + 0.5f);
     }
 
     public interface OnButtonListener {
@@ -116,8 +111,8 @@ public class IOSDialog extends Dialog implements View.OnClickListener {
 
         private Builder(Context val) {
             context = val;
-            width = dp2px(val, 260);
-            height = dp2px(val, 140);
+            width = SizeUtil.dp2px(val, 260);
+            height = SizeUtil.dp2px(val, 140);
         }
 
         public Builder setText(String val) {

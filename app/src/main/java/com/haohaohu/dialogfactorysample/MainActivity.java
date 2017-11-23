@@ -7,6 +7,7 @@ import android.widget.Toast;
 import com.haohaohu.dialogfactory.IOSDialog;
 import com.haohaohu.dialogfactory.ProgressDialog;
 import com.haohaohu.dialogfactory.ProgressTextDialog;
+import com.haohaohu.dialogfactory.TextDialog;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -42,5 +43,9 @@ public class MainActivity extends AppCompatActivity {
 
     public void onClick3(View view) {
         ProgressTextDialog.newBuilder(MainActivity.this).setText("网络加载中").build().show();
+    }
+
+    public void onClick4(View view) {
+        TextDialog.newBuilder(MainActivity.this).setText("网络加载中").build().show();
     }
 }
