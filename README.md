@@ -8,6 +8,8 @@ Dialog库  仿ios对话框 带进度的dialog  带文字和进度条的dialog
 	+ ![](images/type2.jpg)
 + ProgressTextDialog
 	+ ![](images/type3.jpg)
++ TextDialog
+	+ ![](images/type4.jpg)
 
 # 项目添加方法
 在根 build.gradle中添加
@@ -23,7 +25,7 @@ allprojects {
 在项目build.gradle中添加 ![](https://jitpack.io/v/ronghao/DialogFactory.svg)
 ```
 dependencies {
-    compile 'com.github.ronghao:DialogFactory:1.0.0'
+    compile 'com.github.ronghao:DialogFactory:1.0.1'
 }
 ```
 
