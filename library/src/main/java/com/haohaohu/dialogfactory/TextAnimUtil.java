@@ -1,5 +1,6 @@
 package com.haohaohu.dialogfactory;
 
+import android.support.annotation.NonNull;
 import android.widget.TextView;
 
 /**
@@ -10,11 +11,12 @@ public class TextAnimUtil {
     public TextAnimUtil() {
     }
 
-    public static void showTextLoadingAnim(final TextView textView, final String str) {
-        textView.setTag(R.id.tag_text_loading, Boolean.valueOf(true));
+    public static void showTextLoadingAnim(@NonNull final TextView textView, final String str) {
+        textView.setTag(R.id.tag_text_loading, true);
         Runnable runnable = new Runnable() {
+            @Override
             public void run() {
-                if (textView != null && textView.getHandler() != null) {
+                if (textView.getHandler() != null) {
                     String textStr = textView.getText().toString();
                     int index = TextAnimUtil.getEndSize(textStr);
                     ++index;
@@ -29,7 +31,7 @@ public class TextAnimUtil {
                     }
 
                     synchronized (this) {
-                        if (textView != null && textView.getHandler() != null) {
+                        if (textView.getHandler() != null) {
                             textView.setText(tmpStr);
                             textView.getHandler().postDelayed(this, 500L);
                         }
@@ -38,7 +40,7 @@ public class TextAnimUtil {
             }
         };
         textView.setTag(R.id.tag_text_loading_run, runnable);
-        if (textView != null && textView.getHandler() != null) {
+        if (textView.getHandler() != null) {
             textView.getHandler().post(runnable);
         }
     }
@@ -47,9 +49,9 @@ public class TextAnimUtil {
         return str.endsWith("...") ? 3 : (str.endsWith("..") ? 2 : (str.endsWith(".") ? 1 : 0));
     }
 
-    public static void stopTextLoadingAnim(TextView textView) {
-        if (textView != null && textView.getTag(R.id.tag_text_loading) != null) {
-            boolean is = ((Boolean) textView.getTag(R.id.tag_text_loading)).booleanValue();
+    public static void stopTextLoadingAnim(@NonNull TextView textView) {
+        if (textView.getTag(R.id.tag_text_loading) != null) {
+            boolean is = (Boolean) textView.getTag(R.id.tag_text_loading);
             if (is) {
                 Runnable runnable = (Runnable) textView.getTag(R.id.tag_text_loading_run);
                 synchronized (textView) {
@@ -58,7 +60,7 @@ public class TextAnimUtil {
                     }
                 }
 
-                textView.setTag(R.id.tag_text_loading, Boolean.valueOf(false));
+                textView.setTag(R.id.tag_text_loading, false);
             }
         }
     }

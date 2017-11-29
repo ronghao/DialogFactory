@@ -60,7 +60,7 @@ public class TextDialog extends Dialog {
         stopAnim();
     }
 
-    public void startAnim() {
+    private void startAnim() {
         mTextView.post(new Runnable() {
             @Override
             public void run() {
@@ -69,7 +69,7 @@ public class TextDialog extends Dialog {
         });
     }
 
-    public void stopAnim() {
+    private void stopAnim() {
         mTextView.post(new Runnable() {
             @Override
             public void run() {
