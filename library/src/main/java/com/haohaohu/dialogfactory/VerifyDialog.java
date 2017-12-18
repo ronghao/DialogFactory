@@ -25,10 +25,10 @@ public class VerifyDialog extends Dialog implements View.OnClickListener {
 
     private String text;
     private String okText;
-    private String cancelText;
 
     private int width;
     private int height;
+    private boolean isCancel = true;
 
     public static Builder newBuilder(Context val) {
         return new Builder(val);
@@ -38,10 +38,10 @@ public class VerifyDialog extends Dialog implements View.OnClickListener {
         super(builder.context, R.style.dialog_pay);
         text = builder.text;
         okText = builder.okText;
-        cancelText = builder.cancelText;
         onButtonListener = builder.onButtonListener;
         width = builder.width;
         height = builder.height;
+        isCancel = builder.isCancel;
         initView();
     }
 
@@ -54,6 +54,8 @@ public class VerifyDialog extends Dialog implements View.OnClickListener {
         setContentView(view);
 
         dialogVerifyOk.setOnClickListener(this);
+        setCancelable(isCancel);
+        setCanceledOnTouchOutside(isCancel);
 
         Window window = getWindow();
         window.setGravity(Gravity.CENTER);
@@ -77,25 +79,24 @@ public class VerifyDialog extends Dialog implements View.OnClickListener {
             if (onButtonListener != null) {
                 onButtonListener.onOK();
             }
-            VerifyDialog.this.dismiss();
-        } else {
+            if (isCancel) {
+                VerifyDialog.this.dismiss();
+            }
         }
     }
 
     public interface OnButtonListener {
         void onOK();
-
-        void onCancel();
     }
 
     public static final class Builder {
         private Context context;
         private String text;
         private String okText;
-        private String cancelText;
 
         private int width;
         private int height;
+        private boolean isCancel = true;
         private OnButtonListener onButtonListener;
 
         private Builder(Context val) {
@@ -114,11 +115,6 @@ public class VerifyDialog extends Dialog implements View.OnClickListener {
             return this;
         }
 
-        public Builder setCancelText(String val) {
-            cancelText = val;
-            return this;
-        }
-
         public Builder setOnButtonListener(OnButtonListener listener) {
             onButtonListener = listener;
             return this;
@@ -131,6 +127,11 @@ public class VerifyDialog extends Dialog implements View.OnClickListener {
 
         public Builder setHeight(int height) {
             this.height = height;
+            return this;
+        }
+
+        public Builder setCancel(boolean cancel) {
+            isCancel = cancel;
             return this;
         }
 

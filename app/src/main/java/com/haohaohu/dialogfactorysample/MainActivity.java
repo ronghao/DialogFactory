@@ -51,6 +51,16 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onClick5(View view) {
-        VerifyDialog.newBuilder(MainActivity.this).setText("网络加载中").build().show();
+        VerifyDialog.newBuilder(MainActivity.this)
+                .setText("网络加载中")
+                .setCancel(false)
+                .setOnButtonListener(new VerifyDialog.OnButtonListener() {
+                    @Override
+                    public void onOK() {
+                        Toast.makeText(MainActivity.this, "确认", Toast.LENGTH_SHORT).show();
+                    }
+                })
+                .build()
+                .show();
     }
 }
