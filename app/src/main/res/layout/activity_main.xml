@@ -55,6 +55,14 @@
           android:onClick="onClick5"
           android:text="确认dialog"
           />
+
+      <TextView
+          android:layout_width="match_parent"
+          android:layout_height="26dp"
+          android:gravity="center"
+          android:onClick="onClick6"
+          android:text="基础dialog"
+          />
     </LinearLayout>
   </ScrollView>
 </RelativeLayout>

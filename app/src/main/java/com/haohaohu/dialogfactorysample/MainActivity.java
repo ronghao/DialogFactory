@@ -63,4 +63,9 @@ public class MainActivity extends AppCompatActivity {
                 .build()
                 .show();
     }
+
+    public void onClick6(View view) {
+        MyDialog dialog = new MyDialog(MainActivity.this);
+        dialog.show();
+    }
 }
