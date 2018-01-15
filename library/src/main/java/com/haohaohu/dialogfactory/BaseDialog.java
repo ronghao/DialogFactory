@@ -21,7 +21,7 @@ public abstract class BaseDialog extends Dialog {
     protected View mView;
 
     public BaseDialog(@NonNull Context context) {
-        super(context);
+        super(context, R.style.dialog_pay);
         init();
     }
 
