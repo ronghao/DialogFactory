@@ -13,7 +13,7 @@ import android.widget.TextView;
  * @author haohao(ronghao3508 gmail.com) on 2017/10/10 下午 02:34
  * @version v1.0
  */
-public class TextDialog extends Dialog {
+public class TextLoadDialog extends Dialog {
 
     private TextView mTextView;
 
@@ -25,14 +25,14 @@ public class TextDialog extends Dialog {
         return new Builder(val);
     }
 
-    private TextDialog(Builder builder) {
+    private TextLoadDialog(Builder builder) {
         super(builder.context, R.style.dialog_pay);
         width = builder.width;
         height = builder.height;
         text = builder.text;
         LayoutInflater inflater =
                 (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View view = inflater.inflate(R.layout.dialog_text, null, false);
+        View view = inflater.inflate(R.layout.dialog_text_load, null, false);
         setContentView(view);
         mTextView = (TextView) view.findViewById(R.id.dialog_text_text);
         setText(text);
@@ -51,11 +51,31 @@ public class TextDialog extends Dialog {
     @Override
     public void show() {
         super.show();
+        startAnim();
     }
 
     @Override
     public void dismiss() {
         super.dismiss();
+        stopAnim();
+    }
+
+    private void startAnim() {
+        mTextView.post(new Runnable() {
+            @Override
+            public void run() {
+                TextAnimUtil.showTextLoadingAnim(mTextView, text);
+            }
+        });
+    }
+
+    private void stopAnim() {
+        mTextView.post(new Runnable() {
+            @Override
+            public void run() {
+                TextAnimUtil.stopTextLoadingAnim(mTextView);
+            }
+        });
     }
 
     public static final class Builder {
@@ -86,8 +106,8 @@ public class TextDialog extends Dialog {
             return this;
         }
 
-        public TextDialog build() {
-            return new TextDialog(this);
+        public TextLoadDialog build() {
+            return new TextLoadDialog(this);
         }
     }
 }

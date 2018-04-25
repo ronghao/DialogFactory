@@ -8,6 +8,7 @@ import com.haohaohu.dialogfactory.IOSDialog;
 import com.haohaohu.dialogfactory.ProgressDialog;
 import com.haohaohu.dialogfactory.ProgressTextDialog;
 import com.haohaohu.dialogfactory.TextDialog;
+import com.haohaohu.dialogfactory.TextLoadDialog;
 import com.haohaohu.dialogfactory.VerifyDialog;
 
 public class MainActivity extends AppCompatActivity {
@@ -67,5 +68,9 @@ public class MainActivity extends AppCompatActivity {
     public void onClick6(View view) {
         MyDialog dialog = new MyDialog(MainActivity.this);
         dialog.show();
+    }
+
+    public void onClick7(View view) {
+        TextLoadDialog.newBuilder(MainActivity.this).setText("网络加载中").build().show();
     }
 }

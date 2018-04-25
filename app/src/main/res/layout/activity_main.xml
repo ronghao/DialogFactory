@@ -63,6 +63,13 @@
           android:onClick="onClick6"
           android:text="基础dialog"
           />
+      <TextView
+          android:layout_width="match_parent"
+          android:layout_height="26dp"
+          android:gravity="center"
+          android:onClick="onClick7"
+          android:text="文字dialog 自动加点"
+          />
     </LinearLayout>
   </ScrollView>
 </RelativeLayout>

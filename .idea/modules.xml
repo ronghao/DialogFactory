@@ -3,12 +3,12 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/DialogFactory.iml" filepath="$PROJECT_DIR$/DialogFactory.iml" />
-      <module fileurl="file://$PROJECT_DIR$/DialogFactory.iml" filepath="$PROJECT_DIR$/DialogFactory.iml" />
+      <module fileurl="file://C:\code\git\me\DialogFactory\DialogFactory.iml" filepath="C:\code\git\me\DialogFactory\DialogFactory.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://C:\code\git\me\DialogFactory\app\app.iml" filepath="C:\code\git\me\DialogFactory\app\app.iml" />
       <module fileurl="file://D:\code\git\sourcetree\DialogFactory\library\dialogfactory.iml" filepath="D:\code\git\sourcetree\DialogFactory\library\dialogfactory.iml" />
       <module fileurl="file://$PROJECT_DIR$/library/library.iml" filepath="$PROJECT_DIR$/library/library.iml" />
-      <module fileurl="file://$PROJECT_DIR$/library/library.iml" filepath="$PROJECT_DIR$/library/library.iml" />
+      <module fileurl="file://C:\code\git\me\DialogFactory\library\library.iml" filepath="C:\code\git\me\DialogFactory\library\library.iml" />
     </modules>
   </component>
 </project>

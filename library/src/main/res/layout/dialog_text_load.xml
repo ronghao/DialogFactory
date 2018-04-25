@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/dialog_cache_root"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/base_toast_bg"
+    android:orientation="vertical"
+    android:padding="10dp"
+    >
+
+  <TextView
+      android:id="@+id/dialog_text_text"
+      android:layout_width="60dp"
+      android:layout_height="wrap_content"
+      android:layout_centerInParent="true"
+      android:layout_marginBottom="5dp"
+      android:layout_marginLeft="15dp"
+      android:layout_marginRight="15dp"
+      android:layout_marginTop="5dp"
+      android:gravity="center"
+      android:text="清理中..."
+      android:textColor="#ffffff"
+      />
+
+</RelativeLayout>
