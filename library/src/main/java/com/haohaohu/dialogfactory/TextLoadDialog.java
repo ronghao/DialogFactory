@@ -3,13 +3,14 @@ package com.haohaohu.dialogfactory;
 import android.app.Dialog;
 import android.content.Context;
 import android.view.Gravity;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.TextView;
 
 /**
+ * 文字更新。。。
+ *
  * @author haohao(ronghao3508 gmail.com) on 2017/10/10 下午 02:34
  * @version v1.0
  */
@@ -30,13 +31,14 @@ public class TextLoadDialog extends Dialog {
         width = builder.width;
         height = builder.height;
         text = builder.text;
-        LayoutInflater inflater =
-                (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View view = inflater.inflate(R.layout.dialog_text_load, null, false);
+        View view = View.inflate(getContext(), R.layout.dialog_text_load, null);
         setContentView(view);
         mTextView = (TextView) view.findViewById(R.id.dialog_text_text);
         setText(text);
         Window window = getWindow();
+        if (window == null) {
+            return;
+        }
         window.setGravity(Gravity.CENTER);
         WindowManager.LayoutParams lp = window.getAttributes();
         lp.width = width;

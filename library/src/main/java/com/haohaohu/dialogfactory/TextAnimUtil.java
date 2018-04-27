@@ -4,6 +4,8 @@ import android.support.annotation.NonNull;
 import android.widget.TextView;
 
 /**
+ * 文字动画类
+ *
  * @author haohao(ronghao3508@gmail.com) on 2017/11/23 上午 10:40
  * @version v1.0
  */

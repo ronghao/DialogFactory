@@ -4,7 +4,6 @@ import android.app.Dialog;
 import android.content.Context;
 import android.text.TextUtils;
 import android.view.Gravity;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -46,9 +45,7 @@ public class VerifyDialog extends Dialog implements View.OnClickListener {
     }
 
     private void initView() {
-        LayoutInflater inflater =
-                (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View view = inflater.inflate(R.layout.dialog_verify, null, false);
+        View view = View.inflate(getContext(), R.layout.dialog_verify, null);
         dialogVerifyOk = (TextView) view.findViewById(R.id.dialog_verify_ok);
         dialogVerifyText = (TextView) view.findViewById(R.id.dialog_verify_text);
         setContentView(view);
@@ -58,6 +55,9 @@ public class VerifyDialog extends Dialog implements View.OnClickListener {
         setCanceledOnTouchOutside(isCancel);
 
         Window window = getWindow();
+        if (window == null) {
+            return;
+        }
         window.setGravity(Gravity.CENTER);
         WindowManager.LayoutParams lp = window.getAttributes();
         lp.width = width;

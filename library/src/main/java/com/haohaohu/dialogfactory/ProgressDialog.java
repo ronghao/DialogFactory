@@ -3,7 +3,6 @@ package com.haohaohu.dialogfactory;
 import android.app.Dialog;
 import android.content.Context;
 import android.view.Gravity;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -23,6 +22,7 @@ public class ProgressDialog extends Dialog {
     private ImageView progressLoading;
     private int width;
     private int height;
+    private View view;
 
     public static ProgressDialog.Builder newBuilder(Context val) {
         return new ProgressDialog.Builder(val);
@@ -36,12 +36,13 @@ public class ProgressDialog extends Dialog {
     }
 
     private void initView() {
-        LayoutInflater inflater =
-                (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View view = inflater.inflate(R.layout.dialog_progress, null, false);
+        view = View.inflate(getContext(), R.layout.dialog_progress, null);
         setContentView(view);
 
         Window window = getWindow();
+        if (window == null) {
+            return;
+        }
         window.setGravity(Gravity.CENTER);
         WindowManager.LayoutParams lp = window.getAttributes();
         lp.width = width;
@@ -51,6 +52,18 @@ public class ProgressDialog extends Dialog {
         anim = AnimationUtils.loadAnimation(getContext(), R.anim.progress_rotate);
         anim.setInterpolator(new LinearInterpolator());
         progressLoading = (ImageView) view.findViewById(R.id.dialog_progress_loading);
+    }
+
+    @Override
+    public void show() {
+        super.show();
+        if (progressLoading == null) {
+            progressLoading = (ImageView) view.findViewById(R.id.dialog_progress_loading);
+        }
+        if (anim == null) {
+            anim = AnimationUtils.loadAnimation(getContext(), R.anim.progress_rotate);
+            anim.setInterpolator(new LinearInterpolator());
+        }
         progressLoading.startAnimation(anim);
     }
 

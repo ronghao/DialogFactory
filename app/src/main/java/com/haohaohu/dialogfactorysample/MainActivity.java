@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
     public void onClick5(View view) {
         VerifyDialog.newBuilder(MainActivity.this)
                 .setText("网络加载中")
-                .setCancel(false)
+                .setCancel(true)
                 .setOnButtonListener(new VerifyDialog.OnButtonListener() {
                     @Override
                     public void onOK() {

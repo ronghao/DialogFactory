@@ -5,7 +5,6 @@ import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.view.Gravity;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -37,10 +36,10 @@ public abstract class BaseDialog extends Dialog {
     }
 
     private void init() {
-        if (getLayout() == 0) return;
-        LayoutInflater inflater =
-                (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        mView = inflater.inflate(getLayout(), null, false);
+        if (getLayout() == 0) {
+            return;
+        }
+        mView = View.inflate(getContext(), getLayout(), null);
         setContentView(mView);
         bindView();
 

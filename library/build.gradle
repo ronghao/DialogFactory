@@ -20,6 +20,12 @@ android {
   lintOptions {
     abortOnError false
   }
+
+  tasks.withType(Jar) { jarTask ->
+    if (jarTask.name.equals('packageReleaseJar')) {
+      jarTask.from android.sourceSets.main.java.srcDirs
+    }
+  }
 }
 
 dependencies {
