@@ -21,9 +21,10 @@ public class MainActivity extends AppCompatActivity {
 
     public void onClick1(View view) {
         IOSDialog.newBuilder(MainActivity.this)
-                .setText("自定义标题")
+                .setText("是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否")
                 .setOkText("自定义确定")
                 .setCancelText("自定义取消")
+                .setHeight(1000)
                 .setOnButtonListener(new IOSDialog.OnButtonListener() {
                     @Override
                     public void onOK() {
@@ -53,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void onClick5(View view) {
         VerifyDialog.newBuilder(MainActivity.this)
-                .setText("网络加载中")
+                .setText("是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否")
                 .setCancel(true)
                 .setOnButtonListener(new VerifyDialog.OnButtonListener() {
                     @Override
