@@ -10,12 +10,13 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.view.animation.LinearInterpolator;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 /**
  * 带文字的圆形进度dialog
  *
- * @author haohao(ronghao3508@gmail.com) on 2017/11/20 上午 11:10
+ * @author haohao(ronghao3508 @ gmail.com) on 2017/11/20 上午 11:10
  * @version v1.0
  */
 public class ProgressTextDialog extends Dialog {
@@ -24,6 +25,8 @@ public class ProgressTextDialog extends Dialog {
     private TextView progressText;
     private int width;
     private int height;
+    private int textSize;
+    private int progressSize;
 
     private String text;
     private View view;
@@ -37,6 +40,8 @@ public class ProgressTextDialog extends Dialog {
         text = builder.text;
         width = builder.width;
         height = builder.height;
+        textSize = builder.textSize;
+        progressSize = builder.progressSize;
         initView();
     }
 
@@ -59,7 +64,18 @@ public class ProgressTextDialog extends Dialog {
         progressLoading = (ImageView) view.findViewById(R.id.dialog_progress_text_loading);
         progressText = (TextView) view.findViewById(R.id.dialog_progress_text_text);
 
+        if (progressSize != 0) {
+            RelativeLayout.LayoutParams layoutParams =
+                    new RelativeLayout.LayoutParams(progressSize, progressSize);
+            layoutParams.addRule(RelativeLayout.CENTER_HORIZONTAL);
+            layoutParams.setMargins(0, width / 5, 0, 0);
+            progressLoading.setLayoutParams(layoutParams);
+        }
+
         progressText.setText(text);
+        if (textSize != 0) {
+            progressText.setTextSize(textSize);
+        }
     }
 
     @Override
@@ -86,8 +102,10 @@ public class ProgressTextDialog extends Dialog {
     public static final class Builder {
         private Context context;
         private String text;
-        private int width;
-        private int height;
+        private int width = 0;
+        private int height = 0;
+        private int textSize = 0;
+        private int progressSize = 0;
 
         public ProgressTextDialog build() {
             return new ProgressTextDialog(this);
@@ -95,12 +113,36 @@ public class ProgressTextDialog extends Dialog {
 
         private Builder(Context val) {
             context = val;
-            width = SizeUtil.dp2px(val, 70);
-            height = SizeUtil.dp2px(val, 70);
+            if (width == 0) {
+                width = SizeUtil.dp2px(val, 70);
+            }
+            if (height == 0) {
+                height = SizeUtil.dp2px(val, 70);
+            }
         }
 
         public Builder setText(String text) {
             this.text = text;
+            return this;
+        }
+
+        public Builder setWidth(int width) {
+            this.width = SizeUtil.dp2px(context, width);
+            return this;
+        }
+
+        public Builder setHeight(int height) {
+            this.height = SizeUtil.dp2px(context, height);
+            return this;
+        }
+
+        public Builder setTextSize(int textSize) {
+            this.textSize = textSize;
+            return this;
+        }
+
+        public Builder setProgressSize(int progressSize) {
+            this.progressSize = SizeUtil.dp2px(context, progressSize);
             return this;
         }
     }

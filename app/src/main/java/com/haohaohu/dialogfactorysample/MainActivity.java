@@ -21,7 +21,8 @@ public class MainActivity extends AppCompatActivity {
 
     public void onClick1(View view) {
         IOSDialog.newBuilder(MainActivity.this)
-                .setText("是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否")
+                .setText(
+                        "是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否")
                 .setOkText("自定义确定")
                 .setCancelText("自定义取消")
                 .setHeight(1000)
@@ -41,11 +42,23 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onClick2(View view) {
-        ProgressDialog.newBuilder(MainActivity.this).build().show();
+        ProgressDialog.newBuilder(MainActivity.this)
+                .setWidth(160)
+                .setHeight(160)
+                .setProgressSize(60)
+                .build()
+                .show();
     }
 
     public void onClick3(View view) {
-        ProgressTextDialog.newBuilder(MainActivity.this).setText("网络加载中").build().show();
+        ProgressTextDialog.newBuilder(MainActivity.this)
+                .setText("网络加载中")
+                .setWidth(160)
+                .setHeight(160)
+                .setTextSize(18)
+                .setProgressSize(60)
+                .build()
+                .show();
     }
 
     public void onClick4(View view) {
@@ -54,7 +67,8 @@ public class MainActivity extends AppCompatActivity {
 
     public void onClick5(View view) {
         VerifyDialog.newBuilder(MainActivity.this)
-                .setText("是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否")
+                .setText(
+                        "是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否")
                 .setCancel(true)
                 .setOnButtonListener(new VerifyDialog.OnButtonListener() {
                     @Override
