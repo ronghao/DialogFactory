@@ -25,7 +25,7 @@ allprojects {
 在项目build.gradle中添加 ![](https://jitpack.io/v/ronghao/DialogFactory.svg)
 ```
 dependencies {
-    compile 'com.github.ronghao:DialogFactory:1.0.6'
+    compile 'com.github.ronghao:DialogFactory:1.1.2'
 }
 ```
 # 使用方法
